@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 
 public class LeituraGrafico {
 
-	//Função principal "main"
+	//Método principal "main"
 	public static void main(String[] args){
 
 		//Utiliza a classe JOptionPane para receber os valores digitados pelo usuário
