@@ -10,7 +10,7 @@
  */
 
 
-//Importa da classe Scanner que se encontra no pacote java.util
+//Importa a classe Scanner que se encontra no pacote java.util
 import java.util.Scanner;
 
 //Importa a classe JOptionPane que se encontra no pacote javax.swing
