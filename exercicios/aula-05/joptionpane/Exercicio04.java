@@ -4,35 +4,30 @@
  *
  * Versão: 1.0
  *
- * Data: 25/10/19
+ * Data: 26/10/19
  * 
  * Autor: joaomcode
  *
  */
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Exercicio04 {
 	public static void main(String[] args){
-		//Criação do objeto que lê o valor digitado pelo usuário
-		Scanner leitor = new Scanner(System.in);
-
-		//Criação das variáveis preço e desconto
-		int desconto;
-		float preco;
-
 		//Solicita ao usuário o valor do preço e desconto
-		System.out.print("Digite o valor do preço do produto: ");
-		preco = leitor.nextFloat();
-		System.out.print("Digite o valor da porcentagem do desconto a ser aplicado no produto: ");
-		desconto = leitor.nextInt();
+		String precoString = JOptionPane.showInputDialog("Digite o valor do preço do produto: ");
+		String descontoString = JOptionPane.showInputDialog("Digite o valor da porcentagem do desconto a ser aplicado no produto: ");
+
+		//Cast das variáveis descontoString para int e precoString para float
+		int desconto = Integer.parseInt(descontoString);
+		float preco = Float.parseFloat(precoString);
 
 		//Cálculo do desconto
-		float precoFinal = preco * (100- (float) desconto)/100;
+		float precoFinal = preco * (100 - (float) desconto)/100;
 
 		//Aprensenta os valores na tela
-		System.out.println("O valor digitado foi "+preco+" e o desconto é de "+desconto);
-		System.out.println("O valor final é "+ precoFinal);
+		JOptionPane.showMessageDialog(null,"O valor digitado foi "+preco+" e o desconto é de "+desconto+"%");
+		JOptionPane.showMessageDialog(null,"O valor final é "+ precoFinal);
 	}
 }
 
