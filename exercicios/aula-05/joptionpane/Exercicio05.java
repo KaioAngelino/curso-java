@@ -4,13 +4,13 @@
  *
  * Versão: 1.0
  *
- * Data: 25/10/19
+ * Data: 26/10/19
  * 
  * Autor: joaomcode
  *
  */
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Exercicio05 {
 	public static void main(String[] args){
@@ -20,8 +20,8 @@ public class Exercicio05 {
 		float media2 = (4 + 5 + 6 ) / 3;
 
 		// Imprime a média aritmética media1 e media2
-		System.out.println("A média aritmética de 8, 9 e 7 é: "+media1);
-		System.out.println("A média aritmética de 4, 5 e 6 é: "+media2);
+		JOptionPane.showMessageDialog(null,"A média aritmética de 8, 9 e 7 é: "+media1);
+		JOptionPane.showMessageDialog(null,"A média aritmética de 4, 5 e 6 é: "+media2);
 
 		//Cálculo da soma das duas médias
 		float soma = media1 + media2;
@@ -30,8 +30,8 @@ public class Exercicio05 {
 		float mediaDasMedias = soma/2;
 		
 		//Aprensenta os valores da soma e média aritmética das médias
-		System.out.println("A soma das médias aritiméticas é: "+soma);
-		System.out.println("A média aritmética das médias é: "+mediaDasMedias);
+		JOptionPane.showMessageDialog(null,"A soma das médias aritiméticas é: "+soma);
+		JOptionPane.showMessageDialog(null,"A média aritmética das médias é: "+mediaDasMedias);
 	}
 }
 
