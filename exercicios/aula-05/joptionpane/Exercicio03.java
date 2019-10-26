@@ -4,31 +4,27 @@
  *
  * Versão: 1.0
  *
- * Data: 25/10/19
+ * Data: 26/10/19
  * 
  * Autor: joaomcode
  *
  */
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Exercicio03 {
 	public static void main(String[] args){
-		//Criação do objeto que lê o valor digitado pelo usuário
-		Scanner leitor = new Scanner(System.in);
-
-		//Criação da variável raio
-		float raio;
-
 		//Solicita ao usuário um número
-		System.out.print("Digite o valor do raio da circunferência: ");
-		raio = leitor.nextFloat();
+		String raioString = JOptionPane.showInputDialog("Digite o valor do raio da circunferência: ");
+
+		//Cast variável raioString para float
+		float raio = Float.parseFloat(raioString);
 
 		//Aprensenta os valores na tela
-		System.out.println("O valor digitado foi "+raio);
-		System.out.println("O diâmetro da circunferência é "+ (2*raio));
-		System.out.println("O comprimento da circunferência é "+ (2*raio*Math.PI));
-		System.out.println("A área da circunferência é "+ (Math.pow(raio,2)*Math.PI));
+		JOptionPane.showMessageDialog(null,"O valor digitado foi "+raio);
+		JOptionPane.showMessageDialog(null,"O diâmetro da circunferência é "+ (2*raio));
+		JOptionPane.showMessageDialog(null,"O comprimento da circunferência é "+ (2*raio*Math.PI));
+		JOptionPane.showMessageDialog(null,"A área da circunferência é "+ (Math.pow(raio,2)*Math.PI));
 		
 	}
 }
