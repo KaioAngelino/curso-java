@@ -12,35 +12,31 @@
  *
  */
 
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Exercicio02 {
 	public static void main(String[] args){
-		//Instanciamento do objeto que lê o valor digitado pelo usuário
-		Scanner leitor = new Scanner(System.in);
-
-		//Criação das variáveis ano, meses e dias
-		int anos, meses, dias;
 
 		//Solicita ao usuário a idade dele
-		System.out.print("Qual sua idade? ");
-		anos = leitor.nextInt();
-
+		String anoString = JOptionPane.showInputDialog("Qual sua idade?");
 		//Solicita ao usuário a quantos meses ele tem
-		System.out.print("Quantos meses? ");
-		meses = leitor.nextInt();
-
+		String mesesString = JOptionPane.showInputDialog("Quantos meses?");
 		//Solicita ao usuário quantos dias ele tem
-		System.out.print("E dias? ");
-		dias = leitor.nextInt();
+		String diasString = JOptionPane.showInputDialog("E dias?");
+
+		//Cast das variáveis do sistema
+		int anos = Integer.parseInt(anoString);
+		int meses = Integer.parseInt(mesesString);
+		int dias = Integer.parseInt(diasString);
+
 
 		//Cálculo de quantos dias o cliente possui de vida
 		int diasDeVida =  anos*365 + meses*30 + dias;
 
 
 		//Aprensenta os valores na tela
-		System.out.println("Você tem "+anos+" anos "+meses+" meses e "+dias+" dias de vida.");
-		System.out.println("Sua idade em dias é: "+diasDeVida);
+		JOptionPane.showMessageDialog(null,"Você tem "+anos+" anos "+meses+" meses e "+dias+" dias de vida.");
+		JOptionPane.showMessageDialog(null,"Sua idade em dias é: "+diasDeVida);
 	}
 }
 
