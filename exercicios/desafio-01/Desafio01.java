@@ -12,6 +12,8 @@
  */
 
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Desafio01 {
 	public static void main(String[] args){
@@ -35,28 +37,10 @@ public class Desafio01 {
 			numero[--i] = leitor.nextInt();
 		}
 
-		// Laço para fazer a varredura do vetor
-		for (int i = 0; i < 2; i++) {
-			// Verifica valor armazenado no vetor numero[i] é maior que o conteúdo do vetor numero[(i+1)]
-			if ( numero[i] > numero[++i] ){ // Devido ao pre-incremento o indice do vetor está (i+1)
-				// Armazena o conteúdo do vetor numero[(i+1)] na variável aux
-				aux = numero[i];
-				// Armazena o conteúdo do vetor numero[i] na variável max
-				max = numero[--i]; // Correção do indice do vetor utilizando um pré-decremento
-				System.out.println(aux+"\n"+max+" "+i);
-			} else {
-				max = numero[i];
-				aux = numero[--i];
-				System.out.println(aux+"\n"+max+" "+i);
-			}
-			numero[i] = aux;
-			numero[++i] = max;
-			i--;
-		}
+		Arrays.sort(numero);
 
 		for (int i = 0; i <= 2; i++) {
-			System.out.println("O "+(++i)+"º número foi "+numero[--i]);
+			System.out.println(numero[i]);
 		}
-
 	}
 }
