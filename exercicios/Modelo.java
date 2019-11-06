@@ -5,7 +5,7 @@
  *
  * Data: ------
  * 
- * Autor: joaomcode
+ * Autor: @joaomcode
  *
  */
 
