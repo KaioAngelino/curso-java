@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class ListaDeVetores {
 	public static void main(String[] args){
 		
-		// Instanciamento da lista
 		ArrayList<String> cadastro = new ArrayList<>();
 		
 		// Adiciona o valor dentro da lista
