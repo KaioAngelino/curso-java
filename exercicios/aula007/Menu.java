@@ -1,0 +1,71 @@
+import java.util.Scanner;
+public class Menu{
+
+	public static void main(String args[]){
+		Scanner leitor = new Scanner(System.in);
+
+		System.out.println("Escolha uma das opções abaixo:\n1 - round"
+		+"\n2 - floor\n3 - ceil\n4 - raíz quadrada\n5 - raíz cúbica\n6 - exponencial");
+
+		int opcao = leitor.nextInt();
+			
+		double n1 = 0,resultado = 0;
+
+
+		switch(opcao){
+			case 1: System.out.println("Digite um número racional"); 
+				 n1 = leitor.nextDouble();
+				 resultado = Math.round(n1);
+				 System.out.println("Arredondado: "+resultado);	
+
+			break;
+
+			case 2: System.out.println("Digite um número racional"); 
+				 n1 = leitor.nextDouble();
+				 resultado = Math.floor(n1);
+				 System.out.println("Arredondado para cima:"+resultado);	
+
+			break;
+
+			case 3: System.out.println("Digite um número racional"); 
+				 n1 = leitor.nextDouble();
+				 resultado = Math.ceil(n1);
+				 System.out.println("Arredondado para baixo:"+resultado);	
+
+			break;
+
+			case 4: System.out.println("Digite um número inteiro"); 
+				 n1 = leitor.nextInt();
+				 	if(n1<0){
+					  System.out.println("Não existe resultado real");	
+					}else{
+					  resultado = Math.sqrt(n1);
+				 	  System.out.println("Raiz quadrada: "+resultado);	
+		
+					}
+			break;
+			
+			case 5: System.out.println("Digite um número inteiro"); 
+				 n1 = leitor.nextInt();
+				 resultado = Math.cbrt(n1);
+				 System.out.println("Raíz cúbica: "+resultado);	
+
+			break;
+			
+			case 6: System.out.println("Digite um número inteiro."); 
+				 n1 = leitor.nextInt();
+				 
+				 System.out.println("Digite o expoente."); 
+				 int expoente = leitor.nextInt();
+	
+				 resultado = Math.pow(n1,expoente);
+				 System.out.println("Expoente:"+resultado);	
+
+			break;
+			
+
+
+		}		
+	}
+
+}
