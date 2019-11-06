@@ -1,0 +1,19 @@
+
+public class ParImpar{
+
+	public static void main(String args[]){
+		
+		double resultado = 1;	
+				
+		for(int x = 1;x<=100;x++){
+		
+			resultado += (double)1/x;
+					
+		}
+		
+		System.out.println(resultado);
+				
+	
+	}	
+		
+}
