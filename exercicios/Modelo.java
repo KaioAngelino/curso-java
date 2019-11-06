@@ -1,11 +1,11 @@
 /*
- *Class: Class modelo
+ * Class: Class modelo
  *
- *Versão: 1.0
+ * Versão: 1.0
  *
- *Data: ------
+ * Data: ------
  * 
- *Autor: joaomcode
+ * Autor: joaomcode
  *
  */
 
