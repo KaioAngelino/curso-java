@@ -27,6 +27,14 @@ public class TestaCachorro {
 		System.out.println(c1.getRaca());
 		System.out.println(c1.getIdade());
 		
+		System.out.println(" ");
+		
+		for (Cachorro ca : canil) {
+			System.out.println(ca.getNome());
+		}
+
+		System.out.println(" ");
+		c1.dormir();
 		c1.latir();
 
 	}
