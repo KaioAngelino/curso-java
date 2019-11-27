@@ -50,7 +50,7 @@ public class Data {
 		LocalDate inicioCurso = LocalDate.of(2019,Month.OCTOBER,21);
 		LocalDate finalCurso = LocalDate.of(2020, Month.JANUARY,28);
 		Period tempoDeCurso = Period.between(inicioCurso, finalCurso);
-		System.out.println(tempoDeCurso.get);
+		System.out.println(tempoDeCurso.getDays());
 		System.out.println(" ");
 		
 		System.out.println("Dia: "+data2.getDayOfMonth());
