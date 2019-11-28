@@ -18,6 +18,17 @@ public class Pessoa {
 	 * @param nome
 	 * @param idade
 	 * @param endereco
+	 */
+	public Pessoa(String nome, int idade, String endereco) {
+		this.nome = nome;
+		this.idade = idade;
+		this.endereco = endereco;
+	}
+
+	/**
+	 * @param nome
+	 * @param idade
+	 * @param endereco
 	 * @param bilhete
 	 */
 	public Pessoa(String nome, int idade, String endereco, Bilhete bilhete) {
