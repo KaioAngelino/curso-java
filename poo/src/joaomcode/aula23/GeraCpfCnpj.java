@@ -1,4 +1,4 @@
-package com.osvaldo.cursojava.aula23;
+package joaomcode.aula23;
 
 import java.util.InputMismatchException;
 import java.util.Random;

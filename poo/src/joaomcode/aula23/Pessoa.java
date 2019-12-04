@@ -1,4 +1,4 @@
-package com.osvaldo.cursojava.aula23;
+package joaomcode.aula23;
 
 public class Pessoa {
 	private TipoDeDocumento nomeDocumento;

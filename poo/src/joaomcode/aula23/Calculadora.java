@@ -1,4 +1,4 @@
-package com.osvaldo.cursojava.aula23;
+package joaomcode.aula23;
 
 public enum Calculadora {
 	//Soma, Subtração, Multiplicação, Divisão;
