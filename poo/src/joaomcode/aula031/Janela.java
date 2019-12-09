@@ -43,13 +43,35 @@ public class Janela extends JFrame {
 			}
 		});
 	}
+	
+	public void listar() {
+		try {
+			Connection con = Conexao.getConnection();
+			String sql = "select * from produto;";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			DefaultTableModel model = (DefaultTableModel) table.getModel();
+			model.setNumRows(0); // Limpar tabela
+
+			while (rs.next()) {
+				// Pode-se ser usado o nome do campo no banco, ou um número que especifique sua
+				// posição na tabela
+				model.addRow(new Object[] { rs.getInt("codigo"), rs.getString("nome"), rs.getInt(3),
+						rs.getDouble(4) });
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Create the frame.
 	 */
 	public Janela() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 700, 468);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -92,7 +114,7 @@ public class Janela extends JFrame {
 		txtPreco.setColumns(10);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(162, 12, 274, 155);
+		scrollPane.setBounds(162, 12, 491, 381);
 		contentPane.add(scrollPane);
 
 		table = new JTable();
@@ -129,10 +151,11 @@ public class Janela extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
+				
+				listar();
 			}
 		});
-		btnAdicionar.setBounds(172, 178, 114, 25);
+		btnAdicionar.setBounds(12, 257, 114, 25);
 		contentPane.add(btnAdicionar);
 
 		JButton btnUpdate = new JButton("Update");
@@ -145,7 +168,7 @@ public class Janela extends JFrame {
 
 					stmt.setString(1, txtNome.getText());
 					stmt.setInt(2, Integer.parseInt(txtQtde.getText()));
-					stmt.setDouble(3, Double.parseDouble(txtQtde.getText()));
+					stmt.setDouble(3, Double.parseDouble(txtPreco.getText()));
 					stmt.setInt(4, Integer.parseInt(txtId.getText()));
 
 					stmt.execute();
@@ -157,39 +180,25 @@ public class Janela extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+				listar();
 
 			}
 		});
-		btnUpdate.setBounds(311, 178, 114, 25);
+		btnUpdate.setBounds(12, 331, 114, 25);
 		contentPane.add(btnUpdate);
+		
+		
 
 		JButton btnListar = new JButton("Listar");
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				try {
-					Connection con = Conexao.getConnection();
-					String sql = "select *from produto;";
-					PreparedStatement stmt = con.prepareStatement(sql);
-					ResultSet rs = stmt.executeQuery();
-					DefaultTableModel model = (DefaultTableModel) table.getModel();
-					model.setNumRows(0); // Limpar tabela
-
-					while (rs.next()) {
-						// Pode-se ser usado o nome do campo no banco, ou um número que especifique sua
-						// posição na tabela
-						model.addRow(new Object[] { rs.getInt("codigo"), rs.getString("nome"), rs.getInt(3),
-								rs.getDouble(4) });
-					}
-
-				} catch (ClassNotFoundException | SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				listar();
 
 			}
 		});
-		btnListar.setBounds(172, 215, 114, 25);
+		btnListar.setBounds(12, 294, 114, 25);
 		contentPane.add(btnListar);
 
 		JButton btnDelete = new JButton("Delete");
@@ -200,15 +209,23 @@ public class Janela extends JFrame {
 					Connection con = Conexao.getConnection();
 					String sql = "delete from produto where codigo=?;";
 					PreparedStatement stmt = con.prepareStatement(sql);
-					
+
+					stmt.setInt(1, Integer.parseInt(txtId.getText()));
+
+					stmt.execute();
+					stmt.close();
+					con.close();
+					System.out.println("Produto deletado com sucesso");
 
 				} catch (ClassNotFoundException | SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+				listar();
 			}
 		});
-		btnDelete.setBounds(311, 215, 114, 25);
+		btnDelete.setBounds(12, 368, 114, 25);
 		contentPane.add(btnDelete);
 	}
 }
