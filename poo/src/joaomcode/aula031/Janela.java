@@ -43,22 +43,33 @@ public class Janela extends JFrame {
 			}
 		});
 	}
-	
+
 	public void listar() {
 		try {
+			// Criar conexão
 			Connection con = Conexao.getConnection();
+			// Criando variável com query sql
 			String sql = "select * from produto;";
+			// Criar statement passando a variável
 			PreparedStatement stmt = con.prepareStatement(sql);
+			// Criar um result set
 			ResultSet rs = stmt.executeQuery();
+			// Criar modelo de tabela
 			DefaultTableModel model = (DefaultTableModel) table.getModel();
+			// Limpar colunas
 			model.setNumRows(0); // Limpar tabela
-
+			
+			// printar cada linha do resultset enquanto ouver uma próxima
 			while (rs.next()) {
 				// Pode-se ser usado o nome do campo no banco, ou um número que especifique sua
 				// posição na tabela
-				model.addRow(new Object[] { rs.getInt("codigo"), rs.getString("nome"), rs.getInt(3),
-						rs.getDouble(4) });
+				model.addRow(new Object[] { rs.getInt("codigo"), rs.getString("nome"), rs.getInt(3), rs.getDouble(4) });
 			}
+			
+			// Fechar o resultse
+			rs.close();
+			// Fechar a conexão
+			con.close();
 
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -128,22 +139,29 @@ public class Janela extends JFrame {
 				});
 		scrollPane.setViewportView(table);
 
+		// Listar ao iniciar o programa
+		listar();
+
 		JButton btnAdicionar = new JButton("Adicionar");
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					// Iniciar conexão
 					Connection con = Conexao.getConnection();
-
+					// Criar variável do tipo string com o comando a ser acessado pelo banco
 					String sql = "insert into produto(nome,quantidade,valor) values (?,?,?);";
-
+					// Criando Statement de conexão com o banco
 					PreparedStatement stmt = con.prepareStatement(sql);
 
 					stmt.setString(1, txtNome.getText());
 					stmt.setInt(2, Integer.parseInt(txtQtde.getText()));
 					stmt.setDouble(3, Double.parseDouble(txtPreco.getText()));
 
+					// Executar o comando
 					stmt.execute();
+					// Fechar o statement
 					stmt.close();
+					// Fechar a conexão
 					con.close();
 					System.out.println("Operação realizada com sucesso");
 
@@ -151,7 +169,7 @@ public class Janela extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+
 				listar();
 			}
 		});
@@ -162,8 +180,11 @@ public class Janela extends JFrame {
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
+					// Criar conexão
 					Connection con = Conexao.getConnection();
+					// Criar string com o comando para o banco
 					String sql = "update produto set nome=?, quantidade=?, valor=? where codigo=?;";
+					// Criar statement com a string
 					PreparedStatement stmt = con.prepareStatement(sql);
 
 					stmt.setString(1, txtNome.getText());
@@ -180,15 +201,13 @@ public class Janela extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+
 				listar();
 
 			}
 		});
 		btnUpdate.setBounds(12, 331, 114, 25);
 		contentPane.add(btnUpdate);
-		
-		
 
 		JButton btnListar = new JButton("Listar");
 		btnListar.addActionListener(new ActionListener() {
@@ -221,7 +240,7 @@ public class Janela extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+
 				listar();
 			}
 		});
