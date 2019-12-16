@@ -1,0 +1,48 @@
+CREATE DATABASE db_agencia;
+
+USE db_agencia;
+
+DROP DATABASE db_agencia;
+
+CREATE TABLE passageiro (
+	id bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nome varchar(100),
+	data_nascimento date,
+	idade int,
+	endereco bigint,
+	documento varchar(11),
+	cartao varchar(10),
+	bilhete_id bigint
+);
+
+CREATE TABLE bilhete (
+	id bigint NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	numero varchar(10),
+	data_embarque datetime,
+	local_partida varchar(20),
+	destino varchar(20),
+	tipo_bilhete int,
+	situacao_bilhete int
+);
+
+CREATE TABLE endereco (
+	id bigint AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	tipo_logradouro varchar(10),
+	logradouro varchar(20),
+	numero int,
+	bairro varchar(20),
+	cidade varchar(20),
+	uf varchar(20),
+	pais varchar(20)
+);
+
+ALTER TABLE passageiro ADD FOREIGN KEY (bilhete_id) REFERENCES bilhete(id);
+
+ALTER TABLE passageiro ADD FOREIGN KEY (endereco) REFERENCES endereco(id);
+
+CREATE TABLE usuario(
+	id bigint PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	login varchar(50),
+	senha varchar(50)
+);
+
