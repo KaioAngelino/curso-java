@@ -26,7 +26,7 @@ public class Conexao {
 		String banco = "db_agencia";
 		String url = "jdbc:mysql://localhost/" + banco;
 		String user = "root";
-		String pass = "123";
+		String pass = "utd123456";
 		return DriverManager.getConnection(url, user, pass);
 	}
 
